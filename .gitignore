@@ -1,6 +1,10 @@
+__pycache__/
 video_features/
 *.zip
 data/test_subset/
 data/train_subset/
 data/val_subset/
+data/test_output/
+data/train_output/
+data/val_output/
 data/temp/*
