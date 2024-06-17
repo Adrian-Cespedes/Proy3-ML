@@ -7,8 +7,6 @@ class MyKMeans:
         self.data = data
         self.k = k
         self.umbral = umbral
-        
-        # self.kmeans()
 
     def distance(self, v1, v2):
         return np.linalg.norm(v1 - v2)
@@ -21,7 +19,8 @@ class MyKMeans:
         # Inicialización de centroides utilizando K-means++
         print("using ++")
         centroids = np.zeros((k, data.shape[1]))
-        centroids[0] = data[np.random.choice(data.shape[0])]
+        centroids[0] = data[np.random.choice(data.shape[0])]  # Seleccionar el primer centroide aleatoriamente
+
         for i in range(1, k):
             distances = np.array([min([np.linalg.norm(centroid - point) for centroid in centroids]) for point in data])
             probabilities = distances / distances.sum()
