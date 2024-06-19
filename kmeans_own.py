@@ -18,7 +18,7 @@ class MyKMeans:
 
     def Init_Centroide(self, data, k):
         # Inicialización de centroides utilizando K-means++
-        print("using ++")
+        # print("using ++")
         centroids = np.zeros((k, data.shape[1]))
         centroids[0] = data[np.random.choice(data.shape[0])]  # Seleccionar el primer centroide aleatoriamente
 

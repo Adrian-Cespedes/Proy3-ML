@@ -55,7 +55,7 @@ class AgglomerativeHierarchicalClustering:
                 break
             self.merge_and_form_new_clusters(ci_id, cj_id)
 
-        print(f"Número final de clusters: {len(self.clusters)}")
+        # print(f"Número final de clusters: {len(self.clusters)}")
 
     def get_cluster_labels(self):
         labels = np.zeros(self.N)
