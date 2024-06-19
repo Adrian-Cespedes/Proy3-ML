@@ -7,6 +7,7 @@ class MyKMeans:
         self.data = data
         self.k = k
         self.umbral = umbral
+        self.centroides = None
 
     def distance(self, v1, v2):
         return np.linalg.norm(v1 - v2)
@@ -65,7 +66,7 @@ class MyKMeans:
 
         return np.mean(promedios)
 
-    def kmeans(self):
+    def fit_transform(self):
         centroides =  self.Init_Centroide(self.data, self.k)
         clusters   =  self.get_cluster(self.data, centroides)
         new_centroides = self.return_new_centroide(clusters, self.data, self.k)
@@ -75,7 +76,13 @@ class MyKMeans:
             clusters   =  self.get_cluster(self.data, centroides)
             new_centroides = self.return_new_centroide(clusters, self.data, self.k)
 
+        self.centroides = new_centroides
         return new_centroides, clusters
+
+    def transform(self, new_data):
+        if self.centroides is None:
+            raise ValueError("The model has not been fitted yet. Please run fit_transform first.")
+        return self.get_cluster(new_data, self.centroides)
 
 # data = np.array([[1, 2], [2, 3], [3, 4], [5, 6], [7, 8]])
 # print(data.shape)
