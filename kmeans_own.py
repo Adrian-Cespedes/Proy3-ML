@@ -12,15 +12,10 @@ class MyKMeans:
     def distance(self, v1, v2):
         return np.linalg.norm(v1 - v2)
 
-    # def Init_Centroide(self, data, k):
-    #     indices = np.random.choice(data.shape[0], size=k, replace=False)
-    #     return data[indices]
-
     def Init_Centroide(self, data, k):
         # Inicialización de centroides utilizando K-means++
-        # print("using ++")
         centroids = np.zeros((k, data.shape[1]))
-        centroids[0] = data[np.random.choice(data.shape[0])]  # Seleccionar el primer centroide aleatoriamente
+        centroids[0] = data[np.random.choice(data.shape[0])]
 
         for i in range(1, k):
             distances = np.array([min([np.linalg.norm(centroid - point) for centroid in centroids]) for point in data])
